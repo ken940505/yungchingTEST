@@ -1,24 +1,27 @@
 ﻿@model IEnumerable<yungchingTEST.Models.Yung>
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "待辦事項";
 }
 
-<h2>Home</h2>
+<h2>待辦事項</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("待辦事項新增", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fTitle)
+            編號
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fImportant)
+            標題
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fDate)
+            程度
+        </th>
+        <th>
+            結束日期
         </th>
         <th></th>
     </tr>
@@ -26,13 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @item.fId
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.fTitle)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.fImportant)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fDate)
+            @DateTime.Parse(item.fDate.ToString()).ToShortDateString()
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.fId }) |
