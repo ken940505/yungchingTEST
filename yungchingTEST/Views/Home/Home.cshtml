@@ -1,0 +1,45 @@
+﻿@model IEnumerable<yungchingTEST.Models.Yung>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Home</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fImportant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fImportant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.fId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.fId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.fId })
+        </td>
+    </tr>
+}
+
+</table>
