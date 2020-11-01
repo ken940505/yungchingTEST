@@ -17,7 +17,7 @@ namespace yungchingTEST.Controllers
             var lists = from p in db.Yung
                         select p; 
 
-            return View(lists); //載入資料
+            return View(lists); //載入資料 測試
         }
     }
 }
