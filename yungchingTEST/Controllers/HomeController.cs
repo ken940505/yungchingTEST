@@ -15,7 +15,8 @@ namespace yungchingTEST.Controllers
         public ActionResult Home()
         {
             var lists = from p in db.Yung
-                        select p; 
+                        select p;
+            //var lists = db.Yung.OrderByDescending(m => m.fDate).ToList();
 
             return View(lists); //載入資料 
         }
