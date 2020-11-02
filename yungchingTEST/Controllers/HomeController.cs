@@ -17,7 +17,26 @@ namespace yungchingTEST.Controllers
             var lists = from p in db.Yung
                         select p; 
 
-            return View(lists); //載入資料 // 
+            return View(lists); //載入資料 
         }
+
+        public ActionResult Create() //建立新增方法
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(string fTitle , string fImportant , DateTime fDate)
+        {
+            Yung yg = new Yung(); //建立資料表
+            yg.fTitle = fTitle;
+            yg.fImportant = fImportant;
+            yg.fDate = fDate;
+
+            db.Yung.Add(yg);
+            db.SaveChanges(); //儲存
+
+            return RedirectToAction("Home");
+        }
+
     }
 }
