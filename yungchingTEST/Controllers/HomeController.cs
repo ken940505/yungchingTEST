@@ -26,14 +26,10 @@ namespace yungchingTEST.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(string fTitle , string fImportant , DateTime fDate)
-        {
-            Yung yg = new Yung(); //建立資料表
-            yg.fTitle = fTitle;
-            yg.fImportant = fImportant;
-            yg.fDate = fDate;
+        public ActionResult Create(Yung p)
+        {          
 
-            db.Yung.Add(yg);
+            db.Yung.Add(p);
             db.SaveChanges(); //儲存
 
             return RedirectToAction("Home");
@@ -55,5 +51,27 @@ namespace yungchingTEST.Controllers
             return View();
         }
 
+        public ActionResult Edit (int ? id)
+        {
+            if (id == null)
+                return RedirectToAction("Home");
+            Yung yg = db.Yung.FirstOrDefault(m => m.fId == id);
+            return View(yg);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Yung p)
+        {
+            Yung yg = db.Yung.FirstOrDefault(m => m.fId == p.fId);
+            if(yg != null)
+            {
+                yg.fTitle = p.fTitle;
+                yg.fImportant = p.fImportant;
+                yg.fDate = p.fDate;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Home");
+        }
     }
 }
