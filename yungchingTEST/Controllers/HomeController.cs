@@ -39,5 +39,21 @@ namespace yungchingTEST.Controllers
             return RedirectToAction("Home");
         }
 
+
+        public ActionResult Delete(int ? id) //傳入ID參數
+        {
+            if (id == null)
+                return RedirectToAction("Home");
+            Yung yg = db.Yung.FirstOrDefault(m => m.fId == id);
+            if(yg != null)
+            {
+                db.Yung.Remove(yg);
+                db.SaveChanges();
+                return RedirectToAction("Home");
+            }
+
+            return View();
+        }
+
     }
 }

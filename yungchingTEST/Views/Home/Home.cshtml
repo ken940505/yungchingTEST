@@ -41,8 +41,8 @@
             @DateTime.Parse(item.fDate.ToString()).ToShortDateString()
         </td>
         <td>
-            @Html.ActionLink("編輯", "Edit", new { id=item.fId }) |
-            @Html.ActionLink("刪除", "Delete", new { id=item.fId })
+            @Html.ActionLink("編輯", "Edit", new { id = item.fId }) |
+            @Html.ActionLink("刪除", "Delete", new { id = item.fId }, new { onClick = "return confirm('確定刪除資料')" })
         </td>
     </tr>
 }
